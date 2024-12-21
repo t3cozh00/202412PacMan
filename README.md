@@ -1,4 +1,4 @@
-## Code Pacman in Java @Kenny Yip Coding
+Code Pacman in Java @Kenny Yip Coding
 
 ## Getting Started
 

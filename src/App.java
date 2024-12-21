@@ -12,8 +12,14 @@ import javax.swing.JFrame; // import the JFrame class from Java's Swing library.
 // step4.1 create hash sets to represent wall, food, and ghost objects
 // step4.2 map title (an array of strings)
 // step4.3 go through the tile map and create the objects for wall, food, and ghost
-
-
+// step5 draw the objects on the screen
+// step5.1 create a function paintComponent
+// step6 to redraw on JPanel to reflect new positions of the objects
+// step6.1 need a game loop to keep updating the screen
+// step6.2 actionPerformed method
+// step6.3 in order to execute the actionPerformed method, we need to create a timer
+// step7 add key listener to move the PacMan and ghosts when press arrow keys
+// step7.1 PacMan class implement the KeyListener interface
 public class App {
     public static void main(String[] args) throws Exception {
         int rowCount = 21;
