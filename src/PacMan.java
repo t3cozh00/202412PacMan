@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.util.HashSet;
 import java.util.Random;
 
-public class PacMan extends JPanel implements ActionListener
+public class PacMan extends JPanel implements ActionListener, KeyListener
 {
     // create a class to store the information of block
     class Block {
@@ -84,6 +84,8 @@ public class PacMan extends JPanel implements ActionListener
     PacMan () {
         setPreferredSize(new Dimension(boardWidth, boardHeight));
         setBackground(Color.BLACK);
+        addKeyListener(this);
+        setFocusable(true); // make sure the JPanel is the one listening to key presses 
 
         // load images
         wallImage = new ImageIcon(getClass().getResource("./wall.png")).getImage();
@@ -182,5 +184,18 @@ public class PacMan extends JPanel implements ActionListener
     @Override
     public void actionPerformed(ActionEvent e) {
         repaint(); // to call paintComponent
+    }
+
+    @Override
+    // keyTyped: when you type on a key that has a corresponding character
+    // keyPressed: you press a key including arrow keys to trigger this function
+    public void keyTyped(KeyEvent e) {}
+
+    @Override
+    public void keyPressed(KeyEvent e) {}
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+        System.out.println("KeyEvent: " + e.getKeyCode());
     }
 }

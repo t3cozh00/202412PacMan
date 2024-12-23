@@ -20,6 +20,8 @@ import javax.swing.JFrame; // import the JFrame class from Java's Swing library.
 // step6.3 in order to execute the actionPerformed method, we need to create a timer
 // step7 add key listener to move the PacMan and ghosts when press arrow keys
 // step7.1 PacMan class implement the KeyListener interface
+// step7.2 implement the three methods of the KeyListener interface
+// step7.3 add 'addKeyListener(this)' 'setFocusable()' to the constructor of PacMan class
 public class App {
     public static void main(String[] args) throws Exception {
         int rowCount = 21;
@@ -42,6 +44,7 @@ public class App {
         PacMan pacmanGame = new PacMan();
         frame.add(pacmanGame); // add the PacMan object to the JFrame
         frame.pack(); // resize the window to fit the preferred size of its contents
+        pacmanGame.requestFocus(); // make sure the JPanel is the one listening to key presses
         frame.setVisible(true); // make the window visible
     }
 }
