@@ -18,6 +18,11 @@ public class PacMan extends JPanel implements ActionListener, KeyListener
         int startX;
         int startY;
 
+        // specifiy volocities for each object in x and y directions
+        char direction = 'U'; // U = up, D = down, L = left, R = right
+        int velocityX = 0;
+        int velocityY = 0;
+
         // create a constructor Block
         Block(Image image, int x, int y, int width, int height) {
             this.image = image;
@@ -27,6 +32,31 @@ public class PacMan extends JPanel implements ActionListener, KeyListener
             this.height = height;
             this.startX = x;
             this.startY = y;
+        }
+
+        // when press the arrow key, update the direction and velocity
+        void updateDirection(char direction) {
+            this.direction = direction;
+            updateVelocity();
+        }
+
+        void updateVelocity() {
+            if (direction == 'U') {
+                velocityX = 0;
+                velocityY = -tileSize/4;
+            }
+            else if (direction == 'D') {
+                velocityX = 0;
+                velocityY = tileSize/4;
+            }
+            else if (direction == 'L') {
+                velocityX = -tileSize/4;
+                velocityY = 0;
+            }
+            else if (direction == 'R') {
+                velocityX = tileSize/4;
+                velocityY = 0;
+            }
         }
     }
 
@@ -180,9 +210,15 @@ public class PacMan extends JPanel implements ActionListener, KeyListener
         }
     }
 
+    public void move() {
+        pacman.x += pacman.velocityX;
+        pacman.y += pacman.velocityY;
+    }
+
     // used for game loop
     @Override
     public void actionPerformed(ActionEvent e) {
+        move(); // update the position of the objects, then repaint
         repaint(); // to call paintComponent
     }
 
@@ -196,6 +232,18 @@ public class PacMan extends JPanel implements ActionListener, KeyListener
 
     @Override
     public void keyReleased(KeyEvent e) {
-        System.out.println("KeyEvent: " + e.getKeyCode());
+        //System.out.println("KeyEvent: " + e.getKeyCode());
+        if (e.getKeyCode() == KeyEvent.VK_UP) {
+            pacman.updateDirection('U');
+        }
+        else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+            pacman.updateDirection('D');
+        }
+        else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+            pacman.updateDirection('L');
+        }
+        else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+            pacman.updateDirection('R');
+        }
     }
 }

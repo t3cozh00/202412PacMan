@@ -22,6 +22,9 @@ import javax.swing.JFrame; // import the JFrame class from Java's Swing library.
 // step7.1 PacMan class implement the KeyListener interface
 // step7.2 implement the three methods of the KeyListener interface
 // step7.3 add 'addKeyListener(this)' 'setFocusable()' to the constructor of PacMan class
+// step7.4 enable pacman and ghosts to move when press arrow keys: specifiy volocities for each object in x and y directions; add three variables to the PacMan class in Block class: direction, velocityX, velocityY for pacman, wall, ghost
+// step7.5 update direction/velocity by using function updateDirection/updateVelocity in Block class; modify keyReleased method; add function move()
+
 public class App {
     public static void main(String[] args) throws Exception {
         int rowCount = 21;
